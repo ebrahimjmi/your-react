@@ -1,3 +1,59 @@
-#heading {
-  color: red;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+}
+img {
+  max-width: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: #000
+}
+.border {
+  border: 1px solid #ccc;
+}
+.border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+/* header section */
+nav ul li {
+  margin: 0 5px;
+}
+
+
+/* restaurants card */
+.res-card {
+  width: 25%;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+.search {
+  padding: 18px;
 }
