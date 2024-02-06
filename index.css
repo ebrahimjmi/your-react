@@ -45,6 +45,12 @@ nav ul li {
   margin: 0 5px;
 }
 
+.mt-4 {
+  margin-top: 8px;
+}
+.d-block {
+  display: block;
+}
 
 /* restaurants card */
 .res-card {
@@ -56,4 +62,18 @@ nav ul li {
 }
 .search {
   padding: 18px;
+}
+
+/* shimmer card */
+
+.shimmer-card {
+  width: 250px;
+  height: 300px;
+  background-color: #ccc;
+}
+.m-4 {
+  margin: 4px;
+}
+.mx-4 {
+  margin: 0 4px;
 }

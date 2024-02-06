@@ -1,9 +1,11 @@
+import { CLOUDINARY_IMG_URL } from "../utils/Constant";
+
 const RestaurantCard = (props) => {
-  const {id, name, cusines, deliveryTime, avgRating} = props;
+  const {id, name, cusines, deliveryTime, avgRating, img} = props;
   return (
     <div className="res-card" key={id} >
       <div className="card-img">
-        <img src="https://b.zmtcdn.com/data/dish_photos/b6c/9b153dffd3829fb695a66e4fd7182b6c.jpeg" width={200}/>
+        <img src={CLOUDINARY_IMG_URL+'/'+img} width={200}/>
       </div>
       <div className="card-body">
         <h3>{name}</h3>
