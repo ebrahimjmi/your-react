@@ -47,3 +47,6 @@ whenever super power of react variable chage or update, re-render the component
 #Shimmer UI
 
 Loading times are unavoidable in application development. From a user experience (UX) perspective, the most important thing is to show your users that loading is taking place. One popular approach to communicate to users that data is loading is to display a chrome color with a shimmer animation over the shapes that approximate the type of content that is loading.
+
+
+Routing: createBrowserRouter, RouterProvider, Outlet, Link, useRoueError, client side vs server side routing, dynamic routing 

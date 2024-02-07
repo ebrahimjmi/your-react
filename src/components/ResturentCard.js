@@ -1,9 +1,10 @@
 import { CLOUDINARY_IMG_URL } from "../utils/Constant";
 
 const RestaurantCard = (props) => {
+ 
   const {id, name, cusines, deliveryTime, avgRating, img} = props;
   return (
-    <div className="res-card" key={id} >
+    <>
       <div className="card-img">
         <img src={CLOUDINARY_IMG_URL+'/'+img} width={200}/>
       </div>
@@ -13,7 +14,7 @@ const RestaurantCard = (props) => {
         <strong style={{fontSize: 12, display: 'block'}}>Delivery Time: {deliveryTime}</strong>
         <strong style={{fontSize: 12, display: 'block'}}>Rating: {avgRating}</strong>
       </div>
-    </div>
+    </>
   );
 };
 

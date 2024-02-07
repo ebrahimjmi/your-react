@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./ResturentCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resData, setResData] = useState(null);
@@ -23,8 +24,6 @@ const Body = () => {
       });
   }, []);
 
-  console.log('render')
-
   return searchRestData === null ? (
     <div className="flex flex-wrap">
       <Shimmer />
@@ -44,8 +43,25 @@ const Body = () => {
       <div className="container">
         <div className="filter">
           <div className="serach mt-4">
-            <input type="text" className="searchBtn" value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)} />
-            <button onClick={(e) => setSearchRestData(resData.filter((data) => data.info.name.toLowerCase().includes(searchTxt.toLowerCase())))}>Search</button>
+            <input
+              type="text"
+              className="searchBtn"
+              value={searchTxt}
+              onChange={(e) => setSearchTxt(e.target.value)}
+            />
+            <button
+              onClick={(e) =>
+                setSearchRestData(
+                  resData.filter((data) =>
+                    data.info.name
+                      .toLowerCase()
+                      .includes(searchTxt.toLowerCase())
+                  )
+                )
+              }
+            >
+              Search
+            </button>
           </div>
           <button
             className="filterBtn mt-4"
@@ -64,14 +80,16 @@ const Body = () => {
           <div className="flex flex-wrap">
             {searchRestData.map((data) => {
               return (
-                <RestaurantCard
-                  id={data.info.id}
-                  name={data.info.name}
-                  cusines={data.info.cusines}
-                  deliveryTime={data.info.sla.deliveryTime}
-                  avgRating={data.info.avgRating}
-                  img={data.info.cloudinaryImageId}
-                />
+                <Link key={data.info.id} className="res-card" >
+                  <RestaurantCard
+                    id={data.info.id}
+                    name={data.info.name}
+                    cusines={data.info.cusines}
+                    deliveryTime={data.info.sla.deliveryTime}
+                    avgRating={data.info.avgRating}
+                    img={data.info.cloudinaryImageId}
+                  />
+                </Link>
               );
             })}
           </div>
