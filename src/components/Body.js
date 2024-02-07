@@ -3,8 +3,9 @@ import RestaurantCard from "./ResturentCard";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [resData, setResData] = useState([]);
-
+  const [resData, setResData] = useState(null);
+  const [searchRestData, setSearchRestData] = useState(null);
+  const [searchTxt, setSearchTxt] = useState("");
   useEffect(() => {
     fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5511069&lng=77.2983373&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -16,10 +17,15 @@ const Body = () => {
         setResData(
           data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
         );
+        setSearchRestData(
+          data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+        );
       });
   }, []);
 
-  return resData.length === 0 ? (
+  console.log('render')
+
+  return searchRestData === null ? (
     <div className="flex flex-wrap">
       <Shimmer />
       <Shimmer />
@@ -38,14 +44,14 @@ const Body = () => {
       <div className="container">
         <div className="filter">
           <div className="serach mt-4">
-            <input type="text" className="searchBtn" />
-            <button>Search</button>
+            <input type="text" className="searchBtn" value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)} />
+            <button onClick={(e) => setSearchRestData(resData.filter((data) => data.info.name.toLowerCase().includes(searchTxt.toLowerCase())))}>Search</button>
           </div>
           <button
             className="filterBtn mt-4"
             onClick={(e) => {
               const fiterData = resData.filter(
-                (data) => data.data.avgRating > 4.3
+                (data) => data.info.avgRating > 4.3
               );
               console.log(fiterData);
               setResData(fiterData);
@@ -56,7 +62,7 @@ const Body = () => {
         </div>
         <div className="res-conatiner">
           <div className="flex flex-wrap">
-            {resData.map((data) => {
+            {searchRestData.map((data) => {
               return (
                 <RestaurantCard
                   id={data.info.id}
