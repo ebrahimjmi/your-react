@@ -80,7 +80,7 @@ const Body = () => {
           <div className="flex flex-wrap">
             {searchRestData.map((data) => {
               return (
-                <Link key={data.info.id} className="res-card" >
+                <Link key={data.info.id} className="res-card" to={`/restaurents/${data.info.id}`}>
                   <RestaurantCard
                     id={data.info.id}
                     name={data.info.name}

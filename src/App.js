@@ -1,26 +1,15 @@
-import React, { Children } from "react";
+import React, { Children, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import * as math from "../Math";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, useParams } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-{/* <div>
-  <di>
-    <div>This is title</div>
-  </di>
-</div> */}
-// const title = React.createElement('div', {}, React.createElement('div', {}, React.createElement('div', {}, "This is Title"))); // react element 
-
-
-// console.log(math.add(2, 3));
-
-
-
 const AppLayout = () => {
+  const {id} = useParams();
   return (
     <div className="app">
       <Header />
@@ -31,29 +20,29 @@ const AppLayout = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
       {
-        path: '/',
-        element: <Body />
+        path: "/",
+        element: <Body />,
       },
       {
-        path: '/about',
-        element: <About />
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/contact',
-        element: <Contact />
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path: '/restaurents/123',
-        element: <RestaurantMenu />
-      }
-    ]
-  }
-])
+        path: "/restaurents/:resId",
+        element: <RestaurantMenu />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

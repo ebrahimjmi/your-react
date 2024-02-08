@@ -9,7 +9,7 @@ export const Header = () => {
       <div className="container">
         <div className="flex justify-space-between">
           <div className="site-logo">
-            <img src={LOGO_URL} width={100} />
+            <Link to='/'><img src={LOGO_URL} width={100} /></Link>
           </div>
           <nav>
             <ul className="flex">
