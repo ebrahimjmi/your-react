@@ -5,27 +5,30 @@ export const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 
   return (
-    <header className="header border-bottom">
-      <div className="container">
-        <div className="flex justify-space-between">
+    <header className="header border-bottom bg-pink-50">
+      <div className="container m-auto">
+        <div className="flex justify-between items-center">
           <div className="site-logo">
             <Link to='/'><img src={LOGO_URL} width={100} /></Link>
           </div>
           <nav>
             <ul className="flex">
-              <li>
+              <li className="mx-4">
                 <Link to="/">Home</Link>
               </li>
-              <li>
+              <li className="mx-4">
                 <Link to="/about">About</Link>
               </li>
-              <li>
+              <li className="mx-4">
                 <Link to="/contact">Contact US</Link>
               </li>
-              <li>
+              <li className="mx-4">
+                <Link to="/grocery">Grocery</Link>
+              </li>
+              <li className="mx-4">
                 <Link to="/cart">Cart</Link>
               </li>
-              <li>
+              <li className="mx-4"> 
                 <button
                   onClick={(e) =>
                     loginBtn === "Login"

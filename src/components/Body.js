@@ -40,14 +40,15 @@ const Body = () => {
     </div>
   ) : (
     <div className="body">
-      <div className="container">
+      <div className="container m-auto">
         <div className="filter">
           <div className="serach mt-4">
             <input
               type="text"
-              className="searchBtn"
+              className="searchBtn border  outline-none"
               value={searchTxt}
               onChange={(e) => setSearchTxt(e.target.value)}
+              
             />
             <button
               onClick={(e) =>
@@ -59,28 +60,29 @@ const Body = () => {
                   )
                 )
               }
+              className=" border p-2 bg-gray-50"
             >
               Search
             </button>
-          </div>
-          <button
-            className="filterBtn mt-4"
+            <button
+            className="btn bg-green-100 ml-10 p-2 rounded-lg "
             onClick={(e) => {
               const fiterData = resData.filter(
                 (data) => data.info.avgRating > 4.3
               );
-              console.log(fiterData);
               setResData(fiterData);
             }}
           >
             Top Rated Restaurents
           </button>
+          </div>
+         
         </div>
         <div className="res-conatiner">
           <div className="flex flex-wrap">
             {searchRestData.map((data) => {
               return (
-                <Link key={data.info.id} className="res-card" to={`/restaurents/${data.info.id}`}>
+                <Link key={data.info.id} className="res-card m-4 block bg-gray-100 rounded-lg " to={`/restaurents/${data.info.id}`}>
                   <RestaurantCard
                     id={data.info.id}
                     name={data.info.name}
