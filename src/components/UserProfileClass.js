@@ -5,8 +5,6 @@ class User extends Component {
     super(props);
   }
 
-  componentDidMount() {
-  }
   render() {
     const {name, company, location, bio, avatar_url} = this.props.profile;
     return (
