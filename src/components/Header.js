@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/Constant";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 export const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 
@@ -13,6 +14,9 @@ export const Header = () => {
           </div>
           <nav>
             <ul className="flex">
+              <li>
+                <h3><strong>status</strong>: {useOnlineStatus? 'online' : 'offline'}</h3>
+              </li>
               <li className="mx-4">
                 <Link to="/">Home</Link>
               </li>

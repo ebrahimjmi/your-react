@@ -20,21 +20,17 @@ const About = () => {
     .then((data) => {
       setUserInfo(data);
     })
-    console.log('parent component did mount')
     const timer = setInterval(() => {
     }, 1000)
 
     return () => {                            // componentWillUnmo
       clearInterval(timer);
-      console.log('comonent will unmount')
     }
   }, [])
 
   const clickCounter = (e) => {
     setCounter(counter+1);
   }
-
-  console.log('parent render')
   return (
     <>
     <UserProfile user = {userInfo} counter = {counter} clickCounter = {clickCounter} />

@@ -4,10 +4,8 @@ const UserProfile = ({user, counter, clickCounter}) => {
 
   const {name, company, location, bio, avatar_url} = user;
 
-  console.log('child render');
 
   useEffect(() => {
-    console.log('child component did mount');
   }, [])
   return(
     <div className="container">

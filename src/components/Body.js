@@ -23,7 +23,6 @@ const Body = () => {
         );
       });
   }, []);
-
   return searchRestData === null ? (
     <div className="flex flex-wrap">
       <Shimmer />
@@ -45,10 +44,9 @@ const Body = () => {
           <div className="serach mt-4">
             <input
               type="text"
-              className="searchBtn border  outline-none"
+              className="searchBtn border px-4 py-2 rounded-md  outline-none"
               value={searchTxt}
               onChange={(e) => setSearchTxt(e.target.value)}
-              
             />
             <button
               onClick={(e) =>
@@ -65,24 +63,26 @@ const Body = () => {
               Search
             </button>
             <button
-            className="btn bg-green-100 ml-10 p-2 rounded-lg "
-            onClick={(e) => {
-              const fiterData = resData.filter(
-                (data) => data.info.avgRating > 4.3
-              );
-              setResData(fiterData);
-            }}
-          >
-            Top Rated Restaurents
-          </button>
+              className="btn bg-green-100 ml-10 px-4 py-2 rounded-md "
+              onClick={(e) => {
+                const fiterData = resData.filter(
+                  (data) => data.info.avgRating > 4.3
+                );
+                setSearchRestData(fiterData);
+              }}
+            >
+              Top Rated Restaurents
+            </button>
           </div>
-         
         </div>
-        <div className="res-conatiner">
+        <div className="res-conatiner mt-10">
           <div className="flex flex-wrap">
             {searchRestData.map((data) => {
               return (
-                <Link key={data.info.id} className="res-card m-4 block bg-gray-100 rounded-lg " to={`/restaurents/${data.info.id}`}>
+                <div
+                  key={data.info.id}
+                  className="w-1/6 p-2 border m-2 bg-gray-100 hover:bg-gray-200 transition-all rounded-sm"
+                >
                   <RestaurantCard
                     id={data.info.id}
                     name={data.info.name}
@@ -90,8 +90,11 @@ const Body = () => {
                     deliveryTime={data.info.sla.deliveryTime}
                     avgRating={data.info.avgRating}
                     img={data.info.cloudinaryImageId}
+                    aggregatedDiscountInfoV3={
+                      data.info.aggregatedDiscountInfoV3
+                    }
                   />
-                </Link>
+                </div>
               );
             })}
           </div>
