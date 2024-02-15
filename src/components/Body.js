@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard from "./ResturentCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import UserContext from "../hooks/context/UserContext";
 const Body = () => {
+  const {loggedInUser, setUserName} = useContext(UserContext);
   const [resData, setResData] = useState(null);
   const [searchRestData, setSearchRestData] = useState(null);
   const [searchTxt, setSearchTxt] = useState("");
@@ -63,7 +64,7 @@ const Body = () => {
               Search
             </button>
             <button
-              className="btn bg-green-100 ml-10 px-4 py-2 rounded-md "
+              className="btn bg-green-50 ml-10 px-4 py-2 rounded-md "
               onClick={(e) => {
                 const fiterData = resData.filter(
                   (data) => data.info.avgRating > 4.3
@@ -73,6 +74,7 @@ const Body = () => {
             >
               Top Rated Restaurents
             </button>
+            <input type="text" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} className="border border-1 rounded-md px-4 py-2 outline-none ml-5" />
           </div>
         </div>
         <div className="res-conatiner mt-10">

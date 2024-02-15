@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/Constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserContext from "../hooks/context/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+
 export const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+  const {loggedInUser, setUserName} = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <header className="header border-bottom bg-pink-50">
+    <header className="header border-bottom shadow-xl ">
       <div className="container m-auto">
         <div className="flex justify-between items-center">
           <div className="site-logo">
@@ -15,7 +20,7 @@ export const Header = () => {
           <nav>
             <ul className="flex">
               <li>
-                <h3><strong>status</strong>: {useOnlineStatus? 'online' : 'offline'}</h3>
+                <h3>status: {useOnlineStatus? 'online' : 'offline'}</h3>
               </li>
               <li className="mx-4">
                 <Link to="/">Home</Link>
@@ -30,7 +35,7 @@ export const Header = () => {
                 <Link to="/grocery">Grocery</Link>
               </li>
               <li className="mx-4">
-                <Link to="/cart">Cart</Link>
+                <Link to="/cart">Cart({cartItems?.length})</Link>
               </li>
               <li className="mx-4"> 
                 <button
@@ -42,6 +47,9 @@ export const Header = () => {
                 >
                   {loginBtn}
                 </button>
+              </li>
+              <li>
+                {loggedInUser}
               </li>
             </ul>
           </nav>

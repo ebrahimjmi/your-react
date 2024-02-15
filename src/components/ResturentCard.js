@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { CLOUDINARY_IMG_URL } from "../utils/Constant";
+import { useContext } from "react";
+import userContext from "../hooks/context/UserContext";
 
 const RestaurantCard = (props) => {
   const { id, name, cusines, deliveryTime, avgRating, img, aggregatedDiscountInfoV3 } = props;
+  const data = useContext(userContext);
   return (
     <>
       <Link to={`/restaurents/${id}`}>
@@ -15,6 +18,7 @@ const RestaurantCard = (props) => {
           <strong>{cusines}</strong>
           <span className="block text-sm">Delivery Time: {deliveryTime}</span>
           <span className="block text-sm">Rating: {avgRating}</span>
+          <strong>{data.loggedInUser}</strong>
         </div>
       </Link>
     </>

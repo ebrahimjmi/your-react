@@ -1,4 +1,11 @@
-import React, { Children, useEffect, useState, lazy, Suspense } from "react";
+import React, {
+  Children,
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
+  useContext,
+} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -13,16 +20,29 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Grocery from "./components/Grocery";
-import { lazy } from "react";
-
+import UserContext from "./hooks/context/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore.js";
+import Cart from "./components/Cart.js";
 const About = lazy(() => import("./components/About.js"));
 
 const AppLayout = () => {
-  const { id } = useParams();
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const data = {
+      name: "Ebrahim",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
     <div className="app">
-      <Header />
-      <Outlet />
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+          <Header />
+          <Outlet />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -40,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense >
+          <Suspense>
             <About />
           </Suspense>
         ),
@@ -56,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurents/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

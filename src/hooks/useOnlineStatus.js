@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 const useOnlineStatus = () => {
+  const [online, setOnline] = useState(false);
   if(window.navigator.onLine) {
-    return true;
-  } else {
-    return false;
+    setOnline(true);
   }
+  return online;
 }
 
 export default useOnlineStatus;

@@ -5,6 +5,8 @@ const useRestautant = (resId) => {
   const [restInfo, setRestInfo] = useState(null);
   const [resMenuDta, setResMenuData] = useState(null);
 
+
+
   useEffect(() => {
     fetch((`${RESTAURENT_MENU_URL}=${resId}`))
       .then((res) => {
@@ -17,7 +19,6 @@ const useRestautant = (resId) => {
         setRestInfo(
           data?.data?.cards[0]?.card?.card?.info
         )
-        console.log(data);
       });
   }, []);
 
