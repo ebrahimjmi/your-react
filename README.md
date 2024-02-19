@@ -1,4 +1,4 @@
-#parcel
+# parcel
 
 most powerful features of parcel
 
@@ -12,7 +12,7 @@ most powerful features of parcel
 8. 
 
 
-#react app folder structure
+# react app folder structure
   src ->
       components
         header
@@ -21,7 +21,7 @@ most powerful features of parcel
       App.js
 
 
-#two types of export/import
+# two types of export/import
 
 Default export/import
 
@@ -35,7 +35,7 @@ import {component} from "path"
 
 
 
-#react hooks
+# react hooks
 (Normal js utility functions)
 - useState() - superpower react variale 
 whenever super power of react variable chage or update, re-render the component
@@ -44,9 +44,23 @@ whenever super power of react variable chage or update, re-render the component
 
 
 
-#Shimmer UI
+# Shimmer UI
 
 Loading times are unavoidable in application development. From a user experience (UX) perspective, the most important thing is to show your users that loading is taking place. One popular approach to communicate to users that data is loading is to display a chrome color with a shimmer animation over the shapes that approximate the type of content that is loading.
 
 
 Routing: createBrowserRouter, RouterProvider, Outlet, Link, useRoueError, client side vs server side routing, dynamic routing 
+
+# Types of testing(developer)
+
+- unit testing
+- Integration testing
+- End To End Testing - e2e testing
+# setting up testing in our app
+- intall Reat Testing Library
+- install jest testing tool
+- configure babel dependencies
+- configure parcel congig file to disable default Parcel configration
+- Jest - npx jest --init
+- install jsdom library
+  

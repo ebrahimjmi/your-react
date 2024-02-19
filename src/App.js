@@ -24,6 +24,7 @@ import UserContext from "./hooks/context/UserContext.js";
 import { Provider } from "react-redux";
 import appStore from "./store/appStore.js";
 import Cart from "./components/Cart.js";
+import Login from "./components/Login.js";
 const About = lazy(() => import("./components/About.js"));
 
 const AppLayout = () => {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/user",
+        element: <Login />,
       },
       {
         path: "/grocery",
