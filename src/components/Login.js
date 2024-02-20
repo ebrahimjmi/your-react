@@ -1,29 +1,33 @@
 import React, { useRef, useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     passwered: "",
   });
+  const [error, setError] = useState({
+    email: '  '
+  })
+
 
   const handleInput = (e) => {
+    
     const name = e.target.name;
     const value = e.target.value;
 
     setFormData((preData) => {
       return { ...preData, [name]: value };
     });
-    console.log(formData);
   };
+
   const handleFormSubmit = (e) => {
     console.log(formData);
   };
+
   return (
     <div className="mt-4">
-      <div className="login-form m-auto w-1/3">
-        <h3 className="text-xl font-bold mb-6">Sign in to your account</h3>
+      <div className="login-form m-auto w-1/3 p-6 shadow-md">
+        <h3 className="text-xl text-center font-bold mb-6">Login</h3>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <label
@@ -61,7 +65,7 @@ const Login = () => {
               required=""
             />
           </div>
-          <div className="mt-3">
+          <div className="mt-6">
             <button
               onClick={handleFormSubmit}
               className="py-2 px-4 text-white bg-blue-400 rounded-lg"
